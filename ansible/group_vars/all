@@ -1,0 +1,17 @@
+---
+  grafana_proxy_auth: no
+  grafana_proxy_auth_users:
+  - name: admin
+    password: iamaboss
+  grafana_datasources:
+    nds:
+      type: 'influxdb'
+      url: "http://influxdb:8086/db/nds"
+      username: 'root'
+      password: 'root'
+    grafana:
+      type: 'influxdb'
+      url: "http://influxdb:8086/db/grafana"
+      username: 'root'
+      password: 'root'
+      grafanaDb: yes

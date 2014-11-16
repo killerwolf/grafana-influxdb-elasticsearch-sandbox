@@ -1,0 +1,8 @@
+
+#vagrant files
+.vagrant
+
+#ansible galaxy modules
+ansible/roles/Stouts.grafana
+ansible/roles/Stouts.nginx
+ansible/roles/stympy.influxdb

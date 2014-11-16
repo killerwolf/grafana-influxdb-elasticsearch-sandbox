@@ -1,0 +1,13 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: False
+  tasks:
+  - command: ansible-galaxy install --role-file=requirements.txt --roles-path=roles --force
+    sudo: false
+    tags: ['pre-local']
+  - name: Build hosts file
+    lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line='{{ hostvars[item].ansible_default_ipv4.address }} {{item}}' state=present
+    when: hostvars[item].ansible_default_ipv4.address is defined
+    with_items: groups['all']
+    tags: ['post-local']
